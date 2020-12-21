@@ -1,5 +1,5 @@
 from Data_Structures import *
-
+from Algorithms import *
 if __name__=='__main__':
 	option=int(input('1)Data Structures\n2)Algorithms\n'))
 	if option == 1:
@@ -26,19 +26,20 @@ if __name__=='__main__':
 			print('10 is Present !'if queue.contains(10) else 'Nope !')
 			print('2 is Here !' if queue.contains(2) else 'Nope !')
 	elif option==2:
-		choose_al=int(input('1)Linear Search\n2)Binary Search\n'))
+		choose_al=int(input('1)Linear Search\n2)Binary Search\n3)Bubble Sort\n4)Selection Sort\n'))
+		search=Search()
 		if choose_al ==1:
 			#The List of Elements as the Experimental Iteratable !
 			check_list=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,10090,891,188,1,-1]
 			key=10090
 			non_key=-999898
-			print('Yes its Here !'if linear_search.linear_search(10090) else 'Nope !')
-			print('Yes its Here !'if linear_search.linear_search(-99998)else 'Nope !')
+			print('Yes its Here !'if search.linear_search(10090) else 'Nope !')
+			print('Yes its Here !'if search.linear_search(-99998)else 'Nope !')
 		elif choose_al ==2:
 			#The List of Elements as the Experimental Iteratable !
 			check_list=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,10090,891,188,1,-1]
 			check_list.sort()
 			key=10090
-			non_key=-999898
-			print('Yes its Here !'if binary_search.linear_search(check_list,10090) else 'Nope !')
-			print('Yes its Here !'if binary_search.linear_search(check_list,-99998)else 'Nope !')
+			non_key=-1
+			print('Yes its Here !'if search.linear_search(check_list,10090) else 'Nope !')
+			print('Yes its Here !'if search.linear_search(check_list,-1)else 'Nope !')

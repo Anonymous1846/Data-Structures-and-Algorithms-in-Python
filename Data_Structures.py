@@ -47,3 +47,16 @@ class Queue:
 		print(' ')
 
 #--------------------------End of Class Implementation of Queue-----------------------------------------#
+
+#--------------Implemenatation of Linked List -----------------------------------#
+class Linked_List:
+	class Node:
+		def __init__(self,data,next):
+			self.data=data
+			self.next=next
+	def __init__(self,rootNode):
+		self.rootNode=rootNode
+
+
+
+#End of Linked List------------------------------------------#

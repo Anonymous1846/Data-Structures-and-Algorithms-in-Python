@@ -3,7 +3,7 @@ from Algorithms import *
 if __name__=='__main__':
 	option=int(input('1)Data Structures\n2)Algorithms\n'))
 	if option == 1:
-		choose_ds=int(input('1)Stack\n2)Queue\n'))
+		choose_ds=int(input('1)Stack\n2)Queue\n3)Linked List\n4)BST'))
 		if choose_ds ==1:
 			stack=Stack()
 			stack.push(1)
@@ -25,6 +25,9 @@ if __name__=='__main__':
 			queue.traverse()
 			print('10 is Present !'if queue.contains(10) else 'Nope !')
 			print('2 is Here !' if queue.contains(2) else 'Nope !')
+		elif choose_ds==3:
+			linked_list=Linked_List()
+
 	elif option==2:
 		choose_al=int(input('1)Linear Search\n2)Binary Search\n3)Bubble Sort\n4)Selection Sort\n5)Merge Sort\n6)Quick Sort\n7)Insertion Sort\n'))
 		search=Search()
@@ -64,6 +67,7 @@ if __name__=='__main__':
 			sorting=Sorting()
 			print(sorting.quick_sort(test))
 		elif choose_al ==7:
-			test=[12,3,4,-56,,9,-989898,7,8,9,990,-11,9,-189989,-90909,999990,-99909090]
+			test=[12,3,4,-56,9,-989898,7,8,9,990,-11,9,-189989,-90909,999990,-99909090]
+			print(test)
 			sorting=Sorting()
 			print(sorting.insertion_sort(test))

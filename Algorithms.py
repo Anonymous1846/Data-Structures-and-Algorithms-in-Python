@@ -40,25 +40,30 @@ class Sorting:
 #merge sort is a divide an conquer algorithms, and is recursive!
 #----The Merge Sort has three functions to make it work- namely the actual merge sort to be called, merge function to join them and the final merge sort to sort the half of elements !
 	def merge_sort(self,items):
+		#passing the parameters namely the begining index, last index and the actual list/iterable !
 		self._merge_sort(0,len(items)-1,items)
 	def _merge_sort(self,first_index,last_index,items):
 		if first_index <last_index:
+			#Obtaining a middle element by the Finding the Average/Dividing by Two LOL !
 			middle_index=(first_index+last_index)//2
 			self._merge_sort(first_index,middle_index,items)
 			self._merge_sort(middle_index+1,last_index,items)
 			self.merge(first_index,middle_index,last_index,items)
 	def merge(self,first,middle,last,items):
-		right=items[middle:last+1]
 		left=items[first:middle]
-		right.append(999999)
+		right=items[middle:last+1]
 		left.append(999999)
-		i=j=0
+		right.append(999999)
+		i,j=0,0
 		for k in range(first,last+1):
 			if left[i]<=right[j]:
 				items[k]=left[i]
 				i+=1
 			else:
 				items[k]=right[j]
+				j+=1
+#Quick sort is a divide and Conquer Approach and a pivot point is selected and that point is compared to the elements, if they are less than the pivot ,then it comes to the left!
+#if its greater than pivot then they are swapped to the right!
 	def quick_sort(self,items):
 		if len(items)<=1:
 			return items
@@ -73,7 +78,15 @@ class Sorting:
 		return self.quick_sort(less_than)+[pivot]+self.quick_sort(greater_than)
 	#Implementation of insertion sort !
 	def insertion_sort(self,items):
-		pass
+		#The First Element is stored into a Sorted List and The Rest of Elements in An Unsorted List
+		for value in range(1,len(items)):
+			#the value to be sorted is obtained each iterartion 
+			#it is compared with the previous element and swapped if previous element is larger!
+			value_to_be_sorted=items[value]
+			while value_to_be_sorted < items[value-1] and value >0:
+				items[value],items[value-1]=items[value-1],items[value]
+				value-=1
+		return items
 	#Ending of Insertion Sort !
 
 

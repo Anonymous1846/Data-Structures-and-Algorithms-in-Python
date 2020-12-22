@@ -59,7 +59,22 @@ class Sorting:
 				i+=1
 			else:
 				items[k]=right[j]
-				j+=1
+	def quick_sort(self,items):
+		if len(items)<=1:
+			return items
+		else:
+			pivot=items.pop()
+		greater_than,less_than=[],[]
+		for value in items:
+			if value<pivot:
+				less_than.append(value)
+			else:
+				greater_than.append(value)
+		return self.quick_sort(less_than)+[pivot]+self.quick_sort(greater_than)
+	#Implementation of insertion sort !
+	def insertion_sort(self,items):
+		pass
+	#Ending of Insertion Sort !
 
 
 #---------------End of Sorting----------------------#

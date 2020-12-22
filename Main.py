@@ -26,7 +26,7 @@ if __name__=='__main__':
 			print('10 is Present !'if queue.contains(10) else 'Nope !')
 			print('2 is Here !' if queue.contains(2) else 'Nope !')
 	elif option==2:
-		choose_al=int(input('1)Linear Search\n2)Binary Search\n3)Bubble Sort\n4)Selection Sort\n5)Merge Sort\n'))
+		choose_al=int(input('1)Linear Search\n2)Binary Search\n3)Bubble Sort\n4)Selection Sort\n5)Merge Sort\n6)Quick Sort\n7)Insertion Sort\n'))
 		search=Search()
 		if choose_al ==1:
 			#The List of Elements as the Experimental Iteratable !
@@ -59,3 +59,11 @@ if __name__=='__main__':
 			sorting=Sorting()
 			sorting.merge_sort(test)
 			print(test)
+		elif choose_al ==6:
+			test=[12,3,4,-56,7,8,9,990,-11,9,-189989,-90909,999990,-99909090]
+			sorting=Sorting()
+			print(sorting.quick_sort(test))
+		elif choose_al ==7:
+			test=[12,3,4,-56,,9,-989898,7,8,9,990,-11,9,-189989,-90909,999990,-99909090]
+			sorting=Sorting()
+			print(sorting.insertion_sort(test))

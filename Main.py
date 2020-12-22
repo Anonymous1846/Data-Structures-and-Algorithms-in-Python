@@ -26,7 +26,7 @@ if __name__=='__main__':
 			print('10 is Present !'if queue.contains(10) else 'Nope !')
 			print('2 is Here !' if queue.contains(2) else 'Nope !')
 	elif option==2:
-		choose_al=int(input('1)Linear Search\n2)Binary Search\n3)Bubble Sort\n4)Selection Sort\n'))
+		choose_al=int(input('1)Linear Search\n2)Binary Search\n3)Bubble Sort\n4)Selection Sort\n5)Merge Sort\n'))
 		search=Search()
 		if choose_al ==1:
 			#The List of Elements as the Experimental Iteratable !
@@ -43,3 +43,19 @@ if __name__=='__main__':
 			non_key=-1
 			print('Yes its Here !'if search.linear_search(check_list,10090) else 'Nope !')
 			print('Yes its Here !'if search.linear_search(check_list,-1)else 'Nope !')
+		elif choose_al == 3:
+			test=[12,3,4,-56,7,8,9,990,-11,9,-189989,909090]
+			sorting=Sorting()
+			sorting.bubble_sort(test)
+			print(test)
+		elif choose_al == 4:
+			test=[12,3,4,-56,7,8,9,990,-11,9,-189989,909090]
+			sorting=Sorting()
+			sorting.selection_sort(test)
+			print(test)
+
+		elif choose_al ==5:
+			test=[12,3,4,-56,7,8,9,990,-11,9,-189989,-90909,999990,-99909090]
+			sorting=Sorting()
+			sorting.merge_sort(test)
+			print(test)

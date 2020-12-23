@@ -115,7 +115,59 @@ class Linked_List:
 #End of Linked List------------------------------------------#
 
 #------------------begining of BST------------------------#
+#The below node is for Binary Search Tree, it has left and right pointer(s)
+#In a binary search tree the left child must be less than the root node and the right child must be greater than the root node and so on !
+class BSTNode:
+	def __init__(self,data=None):
+		self.data=data
+		self.left=None
+		self.right=None
 class BST:
 	def __init__(self):
+		self.root=None
+	def insert(self,value):
+		if self.root is None:
+			self.root=BSTNode(value)
+		else:
+			self._insert(value,self.root)
+	def _insert(self,value,current_node):
+		if current_node.data>value:
+			if current_node.left == None:
+				current_node.left=BSTNode(value)
+			else:
+				self._insert(value,current_node.left)
+		elif current_node.data<value:
+				if current_node.right == None:
+					current_node.right=BSTNode(value)
+				else:
+					self._insert(value,current_node.right)
+		else:
+			print('Already Exists !!!')
+
+	#Inorder Traversal !
+	def inorder(self):
+		self._inorder(self.root)
+	def _inorder(self,root):
+		if root!=None:
+			self._inorder(root.left)
+			print(f'{root.data} ',end=' ')
+			self._inorder(root.right)
+	#Preorder Traversal !
+	def preorder(self):
+		self._preorder(self.root)
+	def _preorder(self,root):
+		if root!=None:
+			print(f'{root.data} ',end=' ')
+			self._preorder(root.left)	
+			self._preorder(root.right)
+	def postorder(self):
+		self._postorder(self.root)
+	def _postorder(self,root):
+		if root!=None:
+			self._postorder(root.left)	
+			self._postorder(root.right)
+			print(f'{root.data} ',end=' ')
+	def delete_node(self):
 		pass
+
 #--------------------Ending of BST----------------------#

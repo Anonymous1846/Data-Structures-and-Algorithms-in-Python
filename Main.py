@@ -36,6 +36,24 @@ if __name__=='__main__':
 			linked_list.display()
 			print('21 is here !' if linked_list.search(2) else 'Nope !')
 			print(f'The Linked List Has {linked_list.count()} Elements !')
+		elif choose_ds==4:	
+
+			bst=BST()
+			bst.insert(10)
+			bst.insert(11)
+			bst.insert(112)
+			bst.insert(113)
+			bst.insert(-10)
+			bst.insert(90911)
+			bst.insert(-112)
+			bst.insert(-19090913)
+			print('\nInorder:\n')
+			bst.inorder()
+			print('\nPreOrder:\n')
+			bst.preorder()
+			print('\nPostOrder:\n')
+			bst.postorder()
+
 	elif option==2:
 		choose_al=int(input('1)Linear Search\n2)Binary Search\n3)Bubble Sort\n4)Selection Sort\n5)Merge Sort\n6)Quick Sort\n7)Insertion Sort\n'))
 		search=Search()

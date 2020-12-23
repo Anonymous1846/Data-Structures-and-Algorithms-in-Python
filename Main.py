@@ -25,9 +25,17 @@ if __name__=='__main__':
 			queue.traverse()
 			print('10 is Present !'if queue.contains(10) else 'Nope !')
 			print('2 is Here !' if queue.contains(2) else 'Nope !')
-		elif choose_ds==3:
+		elif choose_ds==3:			
 			linked_list=Linked_List()
-
+			linked_list.append(11)
+			linked_list.append(2)
+			linked_list.append(113)
+			linked_list.append(21)
+			linked_list.display()
+			linked_list.delete(113)
+			linked_list.display()
+			print('21 is here !' if linked_list.search(2) else 'Nope !')
+			print(f'The Linked List Has {linked_list.count()} Elements !')
 	elif option==2:
 		choose_al=int(input('1)Linear Search\n2)Binary Search\n3)Bubble Sort\n4)Selection Sort\n5)Merge Sort\n6)Quick Sort\n7)Insertion Sort\n'))
 		search=Search()

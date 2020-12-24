@@ -167,21 +167,65 @@ class BST:
 			self._postorder(root.left)	
 			self._postorder(root.right)
 			print(f'{root.data} ',end=' ')
-	def delete_node(self,data):
-		pass
-	
-	def search(self,value):
+			#the Function to delete the node by value !
+			#the below fucntion makes a call to the recursive private function _delete
+	def delete(self,data):
 		if self.root!=None:
+			self._delete(data,self.root)
+		else:
+			print('The Tree is Empty !')
+	def _delete(self,data,node):
+		#Checks if the node is null
+		if node!=None:
+			#if root node data is given data it checks how many children it has 
+			if node.data==data:
+				#Nill Children 
+				if node.left ==None and node.right==None:
+					return None
+				#Left child and no right Child
+				if node.left!=None and node.right==None:
+					return node.left
+				#Right chil and Nill Left Child !
+				if node.right!=None and node.left==None:
+					return node.right
+				#Two Children
+				if node.right!=None and node.left!=None:
+					#This Condition if For the nodes with two children !
+					#The inorder successor is choosen
+					#3
+				#       /\
+				#      2  4 It has two children !
+				#In this case 4
+					current_node=node.right
+					#We will traverse till we get to the end left child !
+					while current_node.left:
+						current_node=current_node.left
+						#The new Node data will be the inorder successor data !
+					node.data=current_node.data
+					#recursively deleting the current Node !
+					node.right=self._delete(node.data,node.right)
+			#Chcking if the node is greater than(Call will be made to current Function will left node paraemeter) or less than the current Node(right node paramter recursive function!)
+			elif node.data>data:
+				node.left=self._delete(data,node.left)
+			else:
+				node.right=self._delete(data,node.right)
+			return node
+
+
+	#here the The root term is passed on to the function and if it is none, then false is returned else true !	
+	def search(self,value):
+		if self.root!= None:
 			return self._search(value,self.root)
 		else:
 			return False
+		#The Function is iterative and if the value is less than the root node then then we search the left node,otheriwse the right node(recursive !)
 	def _search(self,value,root):
 		if value==root.data:
 			return True
-		elif value<root.data and root.left!=None:
-			self._search(value,root.left)
-		elif value>root.data and root.right!=None:
-			self._search(value,root.right)
+		elif value < root.data and root.left!=None:
+			return self._search(value,root.left)
+		elif value > root.data and root.right!=None:
+			return self._search(value,root.right)
 		return False
 
 #--------------------Ending of BST----------------------#

@@ -1,3 +1,6 @@
+#The following class contains the implementation of the Searching And Sorting Algorithms !
+#Searching Algorithms are Linear Search(Worst Case O(n), Best Case O(1), Average Case: O(n))
+#and The Binary Search which is a divide and conuer approach (Best Case O(1), Worst Case: O(log n), Average Case:O(log n))
 class Search:
 	#Linear Search compares all the possibilites and returns true if found !
 	def linear_search(self,list_of_items,key):
@@ -20,23 +23,25 @@ class Search:
 			else:
 				return -1
 #---------------------End of Searching --------------------------------------------#
-#------------Start of Sorting-----------------------------#
+#-------------------------------------Start of Sorting-----------------------------#
 class Sorting:
-#in bubble sort algorithm, the adacent elements are compared and if the left element is greater than the right element then they are swapped !
+#in bubble sort algorithm, the ajdacent elements are compared and if the left element is greater than the right element then they are swapped !
 	def bubble_sort(self,items):
 		for i in range(len(items)-1,0,-1):
 			for j in range(i):
 				if items[j] > items[j+1]:
 					items[j],items[j+1]=items[j+1],items[j]
+		return items
 #The output list will be in reverse, as we have taken the max value in each iteration
-#In case of Selection sort the max value/ min value is selected and it is updated each time !
+#In case of Selection sort the max value/ min value is selected and it is updated at each iteration  !
 	def selection_sort(self,items):
-		#travesing throoghout the list index -1
+		#travesing throghout the list index -1
 		for i in range(len(items)-1):
-			max_value=i
+			min_value=i
 			for j in range(i,len(items)):
-				if items[j]>items[max_value]:
-					items[max_value],items[j]=items[j],items[max_value]
+				if items[j]<items[min_value]:
+					items[min_value],items[j]=items[j],items[min_value]
+		return items
 #merge sort is a divide an conquer algorithms, and is recursive!
 #----The Merge Sort has three functions to make it work- namely the actual merge sort to be called, merge function to join them and the final merge sort to sort the half of elements !
 	def merge_sort(self,items):

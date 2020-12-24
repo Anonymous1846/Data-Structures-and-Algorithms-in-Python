@@ -1,6 +1,15 @@
 from Data_Structures import *
 from Algorithms import *
+
+#The Function is used to test the Sorting Algorithms !
+def test_sorts(sorting_function,_iteratable):
+	print('Before Sorting !')
+	print(_iteratable)
+	print('After Sorting !')
+	print(sorting_function(_iteratable))
 if __name__=='__main__':
+	sorting=Sorting()
+	test_list=[12,3,4,5,678,900,987,6,4,3,2,123,45,6,-989,-3,99,88,-90909090,234567890]
 	option=int(input('1)Data Structures\n2)Algorithms\n'))
 	if option == 1:
 		choose_ds=int(input('1)Stack\n2)Queue\n3)Linked List\n4)BST'))
@@ -78,27 +87,14 @@ if __name__=='__main__':
 			print('Yes its Here !'if search.linear_search(check_list,10090) else 'Nope !')
 			print('Yes its Here !'if search.linear_search(check_list,-1)else 'Nope !')
 		elif choose_al == 3:
-			test=[12,3,4,-56,7,8,9,990,-11,9,-189989,909090]
-			sorting=Sorting()
-			sorting.bubble_sort(test)
-			print(test)
+			test_sorts(sorting.bubble_sort,test_list)	
 		elif choose_al == 4:
-			test=[12,3,4,-56,7,8,9,990,-11,9,-189989,909090]
-			sorting=Sorting()
-			sorting.selection_sort(test)
-			print(test)
-
+			test_sorts(sorting.selection_sort,test_list)
 		elif choose_al ==5:
-			test=[12,3,4,-56,7,8,9,990,-11,9,-189989,-90909,999990,-99909090]
-			sorting=Sorting()
-			sorting.merge_sort(test)
-			print(test)
+			test_sorts(sorting.merge_sort,test_list)
 		elif choose_al ==6:
-			test=[12,3,4,-56,7,8,9,990,-11,9,-189989,-90909,999990,-99909090]
-			sorting=Sorting()
-			print(sorting.quick_sort(test))
+			test_sorts(sorting.quick_sort,test_list)
 		elif choose_al ==7:
-			test=[12,3,4,-56,9,-989898,7,8,9,990,-11,9,-189989,-90909,999990,-99909090]
-			print(test)
-			sorting=Sorting()
-			print(sorting.insertion_sort(test))
+			test_sorts(sorting.insertion_sort,test_list)
+
+	

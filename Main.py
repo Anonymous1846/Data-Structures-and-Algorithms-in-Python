@@ -53,6 +53,7 @@ if __name__=='__main__':
 			bst.preorder()
 			print('\nPostOrder:\n')
 			bst.postorder()
+			print('The Value 112 is Found !' if bst.search(112) else 'Nope !')
 
 	elif option==2:
 		choose_al=int(input('1)Linear Search\n2)Binary Search\n3)Bubble Sort\n4)Selection Sort\n5)Merge Sort\n6)Quick Sort\n7)Insertion Sort\n'))

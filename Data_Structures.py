@@ -167,7 +167,21 @@ class BST:
 			self._postorder(root.left)	
 			self._postorder(root.right)
 			print(f'{root.data} ',end=' ')
-	def delete_node(self):
+	def delete_node(self,data):
 		pass
+	
+	def search(self,value):
+		if self.root!=None:
+			return self._search(value,self.root)
+		else:
+			return False
+	def _search(self,value,root):
+		if value==root.data:
+			return True
+		elif value<root.data and root.left!=None:
+			self._search(value,root.left)
+		elif value>root.data and root.right!=None:
+			self._search(value,root.right)
+		return False
 
 #--------------------Ending of BST----------------------#

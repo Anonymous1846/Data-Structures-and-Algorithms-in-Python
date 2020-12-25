@@ -12,7 +12,7 @@ if __name__=='__main__':
 	test_list=[12,3,4,5,678,900,987,6,4,3,2,123,45,6,-989,-3,99,88,-90909090,234567890]
 	option=int(input('1)Data Structures\n2)Algorithms\n'))
 	if option == 1:
-		choose_ds=int(input('1)Stack\n2)Queue\n3)Linked List\n4)BST'))
+		choose_ds=int(input('1)Stack\n2)Queue\n3)Linked List\n4)BST\n5)Matrix'))
 		if choose_ds ==1:
 			stack=Stack()
 			stack.push(1)
@@ -56,18 +56,33 @@ if __name__=='__main__':
 			bst.insert(90911)
 			bst.insert(-112)
 			bst.insert(-19090913)
-			print('\nInorder:\n')
+			print('\nInorder:')
 			bst.inorder()
-			print('\nPreOrder:\n')
+			print('\nPreOrder:')
 			bst.preorder()
-			print('\nPostOrder:\n')
+			print('\nPostOrder:')
 			bst.postorder()
 			print('\nThe Value 122 is present !\n' if bst.search(112) else 'Nope !')
 			print('The Value 11112 is present !\n' if bst.search(11112) else 'Nope !')
 			bst.delete(-112)
 			bst.delete(112)
 			bst.inorder()
-
+			print(f'\nThe Current Height of the BST is {bst.height()}')
+		elif choose_ds==5:
+			matrix =Matrix(2,2)
+			matrix1=Matrix(2,2)
+			print('Enter The 2x2 Matix Info:')
+			matrix.inputMatrix()
+			print('\nGood, Now Enter The Second 2x2 Matrix :')
+			matrix1.inputMatrix()
+			print('yes ' if matrix1.equals(matrix) else 'Nope !')
+			finalM=matrix.add(matrix1)
+			for row in range(len(finalM)):
+				for col in range(len(finalM[0])):
+					print(finalM[row][col],end=' ')
+				print(' ')
+				
+		
 	elif option==2:
 		choose_al=int(input('1)Linear Search\n2)Binary Search\n3)Bubble Sort\n4)Selection Sort\n5)Merge Sort\n6)Quick Sort\n7)Insertion Sort\n'))
 		search=Search()

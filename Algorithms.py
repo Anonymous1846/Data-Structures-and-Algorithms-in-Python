@@ -43,32 +43,38 @@ class Sorting:
 					items[min_value],items[j]=items[j],items[min_value]
 		return items
 #merge sort is a divide an conquer algorithms, and is recursive!
-#----The Merge Sort has three functions to make it work- namely the actual merge sort to be called, merge function to join them and the final merge sort to sort the half of elements !
+#The merge sort divides the list into halves until they become indivisible, then they are joined back to the sorted position,also the recursive version of merge sort is applied !
 	def merge_sort(self,items):
-		#passing the parameters namely the begining index, last index and the actual list/iterable !
-		self._merge_sort(0,len(items)-1,items)
-	def _merge_sort(self,first_index,last_index,items):
-		if first_index <last_index:
-			#Obtaining a middle element by the Finding the Average/Dividing by Two LOL !
-			middle_index=(first_index+last_index)//2
-			self._merge_sort(first_index,middle_index,items)
-			self._merge_sort(middle_index+1,last_index,items)
-			self.merge(first_index,middle_index,last_index,items)
-	def merge(self,first,middle,last,items):
-		left=items[first:middle]
-		right=items[middle:last+1]
-		left.append(999999)
-		right.append(999999)
-		i,j=0,0
-		for k in range(first,last+1):
-			if left[i]<=right[j]:
-				items[k]=left[i]
-				i+=1
+		#we will using the merge function to properly merge the final sorted list !
+		#base case if the list has only one element, to justify the indivisibilty !
+		if len(items)<=1:
+			return items
+		#recursive calling of the merge_sort function, until we get to the point that we cannot divide the elements !
+		left,right=self.merge_sort(items[:9]),self.merge_sort(items[9:])	
+		return self.merge(left,right)
+	def merge(self,left_list,right_list):
+		#Used to store the merged lists
+		the_final_list=[]
+		left_index,right_index=0,0
+		#While the left index and right index values are less than their list length values, we append the values in the final list !
+		while left_index<len(left_list) and right_index<len(right_list):
+			if left_list[left_index] < right_list[right_index]:
+				#we check for the smaller value and append them to the list !
+				the_final_list.append(left_list[left_index])
+				#updating the left index by one if the left value is inserted, same done for right list value !
+				left_index+=1
 			else:
-				items[k]=right[j]
-				j+=1
+				the_final_list.append(left_list[right_index])
+				right_index+=1
+				#after checking if there are any elements remaining to be pushed to the final array/list !
+		if len(left_list)==left_index:
+			the_final_list.extend(right_list[right_index:])
+		else:
+			the_final_list.extend(left_list[left_index:])
+		return the_final_list
+
 #Quick sort is a divide and Conquer Approach and a pivot point is selected and that point is compared to the elements, if they are less than the pivot ,then it comes to the left!
-#if its greater than pivot then they are swapped to the right!
+#if its greater than pivot then they are swapped to the right!1
 	def quick_sort(self,items):
 		if len(items)<=1:
 			return items

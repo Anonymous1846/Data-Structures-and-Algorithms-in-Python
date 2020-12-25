@@ -195,7 +195,9 @@ class BST:
 					#3
 				#       /\
 				#      2  4 It has two children !
-				#In this case 4
+				#     /  / \
+				#    1  2   5
+  				#In this case 4
 					current_node=node.right
 					#We will traverse till we get to the end left child !
 					while current_node.left:
@@ -227,5 +229,47 @@ class BST:
 		elif value > root.data and root.right!=None:
 			return self._search(value,root.right)
 		return False
-
+	#The hieght of the bst is the longest path from root node to the leaf node
+	def height(self):
+		if self.root!=None:
+			return self._height(self.root,0)
+		else:
+			return 0
+		#The Current Height will be updated as we traverse the tree!
+	def _height(self,root,current_height):
+		#We return the current height of the tree as soon as we reach the end Node
+		if root==None:return current_height
+		#we update the length as we traverse through the left as well as the right node !
+		left_height=self._height(root.left,current_height+1)
+		right_height=self._height(root.right,current_height+1)
+		# since we need the maximum distance from the root to the leaf node we choose the left and right node and return the max value !
+		return max(left_height,right_height)
 #--------------------Ending of BST----------------------#
+#-----------------Starting of A matrix------------------#
+#A matrix is used to store data in the form of rows an columns
+
+class Matrix:
+	def __init__(self,rows,cols):
+		self.rows=rows
+		self.cols=cols
+		#signifies a n rows x n columns matrix !
+		self.matrixArr=[[0]*cols]*rows
+	def inputMatrix(self):
+		for row in range(self.rows):
+				for col in range(self.cols):
+					self.matrixArr[row][col]=int(input('>>'))
+	def add(self,matrix1):
+		if self.rows==matrix1.rows and self.cols == matrix1.cols:
+			for row in range(self.rows):
+				for col in range(self.cols):
+					self.matrixArr[row][col]+=matrix1.matrixArr[row][col]
+			return self.matrixArr
+	def equals(self,matrix1):
+		flag=False
+		if self.rows == matrix1.rows and self.cols == matrix1.cols:
+			for row in range(len(self.matrixArr)):
+				for col in range(len(self.matrixArr[0])):
+					if matrix1.matrixArr[row][col]==self.matrixArr[row][col]:
+						flag=True
+			return flag
+#-----------------Ending of A matrix------------------# 

@@ -252,24 +252,32 @@ class Matrix:
 	def __init__(self,rows,cols):
 		self.rows=rows
 		self.cols=cols
-		#signifies a n rows x n columns matrix !
-		self.matrixArr=[[0]*cols]*rows
+		self.matrixList=[[0]*self.cols]*self.rows
 	def inputMatrix(self):
-		for row in range(self.rows):
-				for col in range(self.cols):
-					self.matrixArr[row][col]=int(input('>>'))
+		#one liner to get user input matrix !
+		self.matrixList=[[int(input('>>'))for x in range(self.cols)] for x in range(self.rows)]
+	def outputMatrix(self):
+		for i in range(self.rows):
+			for j in range(self.cols):
+				print(f'{self.matrixList[i][j]}\t',end=' ')
+			print(' ')
 	def add(self,matrix1):
-		if self.rows==matrix1.rows and self.cols == matrix1.cols:
-			for row in range(self.rows):
-				for col in range(self.cols):
-					self.matrixArr[row][col]+=matrix1.matrixArr[row][col]
-			return self.matrixArr
-	def equals(self,matrix1):
-		flag=False
-		if self.rows == matrix1.rows and self.cols == matrix1.cols:
-			for row in range(len(self.matrixArr)):
-				for col in range(len(self.matrixArr[0])):
-					if matrix1.matrixArr[row][col]==self.matrixArr[row][col]:
-						flag=True
-			return flag
+		new_matrix=[[0]*self.cols]*self.rows
+	
+		if self.rows==matrix1.rows and self.cols==matrix1.cols:
+			new_matrix=[[self.matrixList[i][j]+matrix1.matrixList[i][j] for j in range(self.cols)] for i in range(self.rows)]
+		return new_matrix
+		
+	def subtract(self,matrix1):
+		new_matrix=[[0]*self.cols]*self.rows
+	
+		if self.rows==matrix1.rows and self.cols==matrix1.cols:
+			new_matrix=[[self.matrixList[i][j]-matrix1.matrixList[i][j] for j in range(self.cols)] for i in range(self.rows)]
+		return new_matrix
+	def transpose(self):
+		for i in range(self.rows):
+			for j in range(self.cols):
+				self.matrixList[i][j]=self.matrixList[j][i]
+		return self.matrixList
+		
 #-----------------Ending of A matrix------------------# 

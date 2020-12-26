@@ -1,6 +1,7 @@
 #The following class contains the implementation of the Searching And Sorting Algorithms !
 #Searching Algorithms are Linear Search(Worst Case O(n), Best Case O(1), Average Case: O(n))
 #and The Binary Search which is a divide and conuer approach (Best Case O(1), Worst Case: O(log n), Average Case:O(log n))
+from functools import reduce
 class Search:
 	#Linear Search compares all the possibilites and returns true if found !
 	def linear_search(self,list_of_items,key):
@@ -106,10 +107,33 @@ class Sorting:
 	#Ending of Insertion Sort !
 	#Starting of Radix Sort--!
 	#Out of the above sorting algorithms, only the radix sort is the sort with nill comparison
-	#it categorizes the numbers accoridng to the place values of the numbers.(Due to this feature, it is called Bucket Sort !)
-
+	#it categorizes the numbers accoridng to the place values of the numbers.(Due to this feature, it is called Bucket Sort !)i
 	def radix_sort(self,items):
-		pass
+		#for calculating the number of passes 
+		for digit in range(0,self.get_num_of_max(items)):
+			#creating ten buckets from the 0 to the max number of digits
+			buckets=[[] for i in range(10)]
+			for item in items:
+				#creating respective indexes for digits for eg:index 1 for one etc..dividing by the 10^(item%10) inorder to get the index!
+				num_index=item//10**(digit)%10
+				#adding the items to respective inner list of the main bucket list !
+				buckets[num_index].append(item)
+				#converts the 2d array into one diemensional!
+			#adding the items to the old list !
+			items=self.flatten_list(buckets)
+		return items
+	#another helper function used to flatten the list !
+	def flatten_list(self,items):
+		#reduce means to apply afunction or expression to an iteratable, here adding the inner lists to form the main list 
+		return reduce(lambda x,y:x+y,items)
+	#Helper Function for The above, radix_sort, returns the number of digits in the largest number! 
+	def get_num_of_max(self,items):
+		#get the number of digits of the largest number !
+		the_current=0
+		for item in items:
+			the_current=max(the_current,item)
+			#converting to string and retrieving the number of elements !
+		return len(str(the_current))
 	#Ending of Radix Sort---!
 
 #---------------End of Sorting----------------------#

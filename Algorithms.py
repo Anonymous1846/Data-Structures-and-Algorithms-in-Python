@@ -47,15 +47,18 @@ class Sorting:
 	def merge_sort(self,items):
 		#we will using the merge function to properly merge the final sorted list !
 		#base case if the list has only one element, to justify the indivisibilty !
+	
 		if len(items)<=1:
 			return items
+		mid=len(items)//2
 		#recursive calling of the merge_sort function, until we get to the point that we cannot divide the elements !
-		left,right=self.merge_sort(items[:9]),self.merge_sort(items[9:])	
+		left=self.merge_sort(items[:mid])
+		right=self.merge_sort(items[mid:])
 		return self.merge(left,right)
 	def merge(self,left_list,right_list):
 		#Used to store the merged lists
 		the_final_list=[]
-		left_index,right_index=0,0
+		left_index=right_index=0
 		#While the left index and right index values are less than their list length values, we append the values in the final list !
 		while left_index<len(left_list) and right_index<len(right_list):
 			if left_list[left_index] < right_list[right_index]:
@@ -64,13 +67,15 @@ class Sorting:
 				#updating the left index by one if the left value is inserted, same done for right list value !
 				left_index+=1
 			else:
-				the_final_list.append(left_list[right_index])
+				the_final_list.append(right_list[right_index])
 				right_index+=1
 				#after checking if there are any elements remaining to be pushed to the final array/list !
-		if len(left_list)==left_index:
-			the_final_list.extend(right_list[right_index:])
-		else:
-			the_final_list.extend(left_list[left_index:])
+		while left_index<len(left_list):
+			the_final_list.append(left_list[left_index])
+			left_index+=1
+		while right_index <len(right_list):
+			the_final_list.append(right_list[right_index])
+			right_index+=1
 		return the_final_list
 
 #Quick sort is a divide and Conquer Approach and a pivot point is selected and that point is compared to the elements, if they are less than the pivot ,then it comes to the left!
@@ -99,6 +104,12 @@ class Sorting:
 				value-=1
 		return items
 	#Ending of Insertion Sort !
+	#Starting of Radix Sort--!
+	#Out of the above sorting algorithms, only the radix sort is the sort with nill comparison
+	#it categorizes the numbers accoridng to the place values of the numbers.(Due to this feature, it is called Bucket Sort !)
 
+	def radix_sort(self,items):
+		pass
+	#Ending of Radix Sort---!
 
 #---------------End of Sorting----------------------#

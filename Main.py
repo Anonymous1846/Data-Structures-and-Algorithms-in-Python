@@ -108,16 +108,13 @@ if __name__=='__main__':
 		if choose_al ==1:
 			#The List of Elements as the Experimental Iteratable !
 			check_list=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,10090,891,188,1,-1]
-			key=10090
-			non_key=-999898
 			print('Yes its Here !'if search.linear_search(10090) else 'Nope !')
 			print('Yes its Here !'if search.linear_search(-99998)else 'Nope !')
 		elif choose_al ==2:
 			#The List of Elements as the Experimental Iteratable !
 			check_list=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,10090,891,188,1,-1]
 			check_list.sort()
-			key=10090
-			non_key=-1
+		
 			print('Yes its Here !'if search.linear_search(check_list,10090) else 'Nope !')
 			print('Yes its Here !'if search.linear_search(check_list,-1909090909090)else 'Nope !')
 		elif choose_al == 3:

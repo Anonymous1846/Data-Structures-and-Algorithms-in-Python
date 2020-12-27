@@ -11,7 +11,8 @@ def tester(func,args):
 			print(f'{sumMatrix[i][j]}\t',end=' ')
 		print(' ')
 #The Function is used to test the Sorting Algorithms !
-
+#The test sort takes the function and The iteratable as an arguement, and prints the list before and after sorting the list !
+#also shows the amount of time taken !
 def test_sorts(sorting_function,_iteratable):
 	print('Before Sorting !\n')
 	print(_iteratable)
@@ -19,12 +20,19 @@ def test_sorts(sorting_function,_iteratable):
 	start=timeit.default_timer()
 	print(sorting_function(_iteratable))
 	print(f'Algorithm Execution Time :{round(timeit.default_timer()-start,2)} seconds !')
+#the below function takes the searching function and the iteratable as an argument and returns the positive prompt if it is found and negative prompt if it is not found !
+
 if __name__=='__main__':
+	#initialing the object for soritng 
 	sorting=Sorting()
+	#initializing the object for Searching 
+	searching=Search()
 	#the Normal Testing list changed to the numbers 
 	#The following line will generate 1000 numbers whose range is between 0 and 10,000
 	test_list=[randint(0,10000) for i in range(1000)]
-	
+	#The test_list used for soriting will be used for finding the number via linear and binary search !
+	key=choice(test_list)
+	non_key=randint(99999,999999)
 	option=int(input('1)Data Structures\n2)Algorithms\n'))
 	if option == 1:
 		choose_ds=int(input('1)Stack\n2)Queue\n3)Linked List\n4)BST\n5)Matrix'))
@@ -106,17 +114,17 @@ if __name__=='__main__':
 		choose_al=int(input('1)Linear Search\n2)Binary Search\n3)Bubble Sort\n4)Selection Sort\n5)Merge Sort\n6)Quick Sort\n7)Insertion Sort\n8)Radix Sort'))
 		search=Search()
 		if choose_al ==1:
-			#The List of Elements as the Experimental Iteratable !
-			check_list=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,10090,891,188,1,-1]
-			print('Yes its Here !'if search.linear_search(10090) else 'Nope !')
-			print('Yes its Here !'if search.linear_search(-99998)else 'Nope !')
+			#test case for linear search !
+			#difference between the initial and end time will give the runtime of the algorithm !
+			start_time=timeit.default_timer()
+			print(f'{key} is found ! Runtime: {round(timeit.default_timer()-start_time,2)}secs' if searching.linear_search(test_list,key) else f'Not Found  Runtime: {round(timeit.default_timer()-start_time,2)}secs!')
+			print(f'{key} is found ! Runtime: {round(timeit.default_timer()-start_time,2)} secs' if searching.linear_search(test_list,non_key) else f'Not Found  Runtime: {round(timeit.default_timer()-start_time,2)} secs!')
 		elif choose_al ==2:
-			#The List of Elements as the Experimental Iteratable !
-			check_list=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,10090,891,188,1,-1]
-			check_list.sort()
-		
-			print('Yes its Here !'if search.linear_search(check_list,10090) else 'Nope !')
-			print('Yes its Here !'if search.linear_search(check_list,-1909090909090)else 'Nope !')
+			#test case for binary search !
+			test_list.sort()
+			start_time=timeit.default_timer()
+			print(f'{key} is found ! Runtime: {round(timeit.default_timer()-start_time,2)} secs' if searching.binary_search(test_list,key) else 'Not Found Runtime: {round(timeit.default_timer()-start_time,2)} secs!')
+			print(f'{key} is found ! Runtime: {round(timeit.default_timer()-start_time,2)} secs' if searching.binary_search(test_list,non_key) else f'Not Found ! Runtime: {round(timeit.default_timer()-start_time,2)} secs!')
 		elif choose_al == 3:
 			test_sorts(sorting.bubble_sort,test_list)	
 		elif choose_al == 4:

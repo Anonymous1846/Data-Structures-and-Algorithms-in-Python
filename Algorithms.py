@@ -12,17 +12,21 @@ class Search:
 		return flag
 	#The Array shoul be sorted and the function returns -1 if not Found !
 	def binary_search(self,list_of_items,key):
-		begin_index,end_index=0,len(list_of_items)-1
-		while begin_index < end_index:
+		begin_index=0
+		end_index=len(list_of_items)-1
+		while begin_index <= end_index:
 			mid=(begin_index+end_index)//2
+			#if the middle element is not the key then we go to the left array if the key is less than the middle element and to the right subarray if it is greater than the middle element !
 			if list_of_items[mid]==key:
-				return mid
-			elif list_of_items[mid]<key:
-				begin=mid+1
-			elif list_of_items[mid]>key:
-				end=mid-1
+				return True
 			else:
-				return -1
+				if list_of_items[mid]<key:
+					begin_index=mid+1
+				else:
+					end_index=mid-1
+					#if element doesn't exists then we return false
+			
+		return False
 #---------------------End of Searching --------------------------------------------#
 #-------------------------------------Start of Sorting-----------------------------#
 class Sorting:

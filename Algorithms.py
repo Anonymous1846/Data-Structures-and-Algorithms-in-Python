@@ -139,5 +139,27 @@ class Sorting:
 			#converting to string and retrieving the number of elements !
 		return len(str(the_current))
 	#Ending of Radix Sort---!
-
+	#staritng of Shell Sort, which is an optimization of Insertion Sort, Incase of insertion sort, if the smaller elements are towards the end, then there are many comparisons and swaps involved !
+	def shell_sort(self,items):
+		gap_size=len(items)//2
+		#iterarting from the 0 to the starting index to the gap size !
+		while gap_size>0:
+			for i in range(gap_size):
+				self.subSortGap(items,i,gap_size)
+			#reducing the gap by half at each iteration !
+			gap_size//=2
+		return items
+#helper funcion for the shell sort which applies the insertion sort on the gaps(sublists) !
+	def subSortGap(self,items,start,gap):
+		#iterating the elemenst in such a way that the elements at alternate positiions are selected(according to gap size !)
+		#inshort the respective subarrays will be first sorted, then the slightly unsorted final-list will be sorted via insertion sort !
+		for i in range(start+gap,len(items),gap):
+			current=items[i]
+			index=i
+			#the condition for gap less than or equal to index is used as python uses negative indexing !
+			while index>=gap and items[index-gap]>current:
+				items[index]=items[index-gap]
+				index-=gap
+			items[index]=current
+	#ending of Shell Sort 
 #---------------End of Sorting----------------------#

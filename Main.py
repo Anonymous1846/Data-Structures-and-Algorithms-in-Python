@@ -8,7 +8,7 @@ def tester(func,args):
 	print(args)
 	for i in range(len(func)):					
 		for j in range(len(func[0])):
-			print(f'{sumMatrix[i][j]}\t',end=' ')
+			print(f'{func[i][j]}\t',end=' ')
 		print(' ')
 #The Function is used to test the Sorting Algorithms !
 #The test sort takes the function and The iteratable as an arguement, and prints the list before and after sorting the list !
@@ -29,7 +29,7 @@ if __name__=='__main__':
 	searching=Search()
 	#the Normal Testing list changed to the numbers 
 	#The following line will generate 1000 numbers whose range is between 0 and 10,000
-	test_list=[randint(0,10000) for i in range(1000)]
+	test_list=[randint(0,50000) for i in range(12500)]
 	#The test_list used for soriting will be used for finding the number via linear and binary search !
 	key=choice(test_list)
 	non_key=randint(99999,999999)
@@ -103,15 +103,18 @@ if __name__=='__main__':
 			#calculated the sum and displayed it via the tester fucntion declared above
 			#The tester function takes two arguments one is the function which returns the 2d matrix and the other is prompt/heading !
 			sumMatrix=matrix.add(matrix1)
-			tester(sumMatrix,'Sum\n')
+			tester(sumMatrix,'\tSum\n------------------------\n')
 			subMatrix=matrix.subtract(matrix1)
-			tester(subMatrix,'Difference\n')	
+			tester(subMatrix,'\tDifference\n------------------------\n')	
 			trans=matrix.transpose()
-			tester(trans,'Transpose\n')
+			tester(trans,'\tTranspose\n------------------------\n')
+			prdt=matrix.multiply(matrix1)
+			tester(prdt,'\tProduct\n------------------------\n')
+
 
 		
 	elif option==2:
-		choose_al=int(input('1)Linear Search\n2)Binary Search\n3)Bubble Sort\n4)Selection Sort\n5)Merge Sort\n6)Quick Sort\n7)Insertion Sort\n8)Radix Sort'))
+		choose_al=int(input('1)Linear Search\n2)Binary Search\n3)Bubble Sort\n4)Selection Sort\n5)Merge Sort\n6)Quick Sort\n7)Insertion Sort\n8)Radix Sort\n9)Shell Sort\n'))
 		search=Search()
 		if choose_al ==1:
 			#test case for linear search !
@@ -137,5 +140,7 @@ if __name__=='__main__':
 			test_sorts(sorting.insertion_sort,test_list)
 		elif choose_al ==8:
 			test_sorts(sorting.radix_sort,test_list)
+		elif choose_al ==9:
+			test_sorts(sorting.shell_sort,test_list)
 
 	

@@ -275,9 +275,24 @@ class Matrix:
 			new_matrix=[[self.matrixList[i][j]-matrix1.matrixList[i][j] for j in range(self.cols)] for i in range(self.rows)]
 		return new_matrix
 	def transpose(self):
-		for i in range(self.rows):
-			for j in range(self.cols):
-				self.matrixList[i][j]=self.matrixList[j][i]
-		return self.matrixList
+		#intilizing a new matrix of the order colsxrows(Such that the new matrix can have the rows equal to that of the ol matrix and cols equal to that of rows of new cols !)
+		transpose=[[0]*self.rows]*self.cols
+		for i in range(len(transpose)):
+			for j in range(len(transpose[0])):
+				transpose[i][j]=self.matrixList[j][i]
+		return transpose
+	#matrix multiplication
+	def multiply(self,matrix1):
+		#inorder to perform matrix multiplication, the rows of the second matrix need to be equal to the cols in the first matrix !
+		if self.cols==matrix1.rows:
+			result_matrix=[[0]*matrix1.cols]*self.rows
+			#number of rows in the first matrix !
+			for i in range(len(self.matrixList)):
+				#number of cols in second matrix !
+				for j in range(len(matrix1.matrixList[0])):
+					#the multiplication logic is that the the first numeber of the resultant matrix is sum of numbers of product of first row of first matrix and first col of second matrix ! 
+					for k in range(len(matrix1.matrixList)):
+						result_matrix[i][j]+=self.matrixList[i][k]+matrix1.matrixList[k][j]
+			return result_matrix
 		
 #-----------------Ending of A matrix------------------# 

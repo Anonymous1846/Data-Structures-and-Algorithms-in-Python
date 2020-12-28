@@ -29,13 +29,13 @@ if __name__=='__main__':
 	searching=Search()
 	#the Normal Testing list changed to the numbers 
 	#The following line will generate 1000 numbers whose range is between 0 and 10,000
-	test_list=[randint(0,50000) for i in range(12500)]
+	test_list=[randint(0,5000) for i in range(5000)]
 	#The test_list used for soriting will be used for finding the number via linear and binary search !
 	key=choice(test_list)
 	non_key=randint(99999,999999)
 	option=int(input('1)Data Structures\n2)Algorithms\n'))
 	if option == 1:
-		choose_ds=int(input('1)Stack\n2)Queue\n3)Linked List\n4)BST\n5)Matrix'))
+		choose_ds=int(input('1)Stack\n2)Queue\n3)Linked List\n4)BST\n5)Doubly Linked List\n6)Matrix'))
 		if choose_ds ==1:
 			stack=Stack()
 			stack.push(1)
@@ -91,7 +91,9 @@ if __name__=='__main__':
 			bst.delete(112)
 			bst.inorder()
 			print(f'\nThe Current Height of the BST is {bst.height()}')
-		elif choose_ds==5:
+		#elif choose_ds==5:
+			#
+		elif choose_ds==6:
 			matrix =Matrix(2,2)
 			matrix1=Matrix(2,2)
 			print('Enter The 2x2 Matix Info:')
@@ -114,7 +116,7 @@ if __name__=='__main__':
 
 		
 	elif option==2:
-		choose_al=int(input('1)Linear Search\n2)Binary Search\n3)Bubble Sort\n4)Selection Sort\n5)Merge Sort\n6)Quick Sort\n7)Insertion Sort\n8)Radix Sort\n9)Shell Sort\n'))
+		choose_al=int(input('1)Linear Search\n2)Binary Search\n3)Bubble Sort\n4)Selection Sort\n5)Merge Sort\n6)Quick Sort\n7)Insertion Sort\n8)Radix Sort\n9)Shell Sort\n10)Max Heap Sort\n'))
 		search=Search()
 		if choose_al ==1:
 			#test case for linear search !
@@ -142,5 +144,8 @@ if __name__=='__main__':
 			test_sorts(sorting.radix_sort,test_list)
 		elif choose_al ==9:
 			test_sorts(sorting.shell_sort,test_list)
+		elif choose_al ==10:
+			test_sorts(sorting.max_heap_sort,test_list)
+
 
 	

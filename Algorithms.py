@@ -162,4 +162,40 @@ class Sorting:
 				index-=gap
 			items[index]=current
 	#ending of Shell Sort 
+	#staring of heap sort
+	#the logic of heap sort(max) is that, it creates max heap where the parent node is always greater than the chilren !
+	#then iteratively the root node is removed and the appended at the end of the array, then the root node is replaced by the next largest element in the heap!
+	#until we get a an acsending order array !(nlogn) time complexity !
+	def max_heap_sort(self,items):
+		return self._max_heap_sort(items,len(items))
+	#helper function which takes the array and the length of the array as arguments !
+	
+	def _max_heap_sort(self,items,size):
+		#here we are building the heap !
+		
+		for i in range((size//2)-1,0,-1):
+			self.heapify(items,size,i)
+		for i in range(size-1,0,-1):
+			#swapping the first element with the current element !
+			items[0]=items[i]
+			self.heapify(items,i,0)
+		return items
+	def heapify(self,items,size,current_index):
+		#the left index is odd greater than the parent index and the right index is even greater than the parent index !
+		#right=parent*2+2
+		#left=parent*2+1
+		largest=current_index
+		right=int(2*current_index)+2
+		left=int(2*current_index)+1
+
+		#if left child is greater than the root element !
+		if(left<size and items[left]>items[largest]):
+			largest=left
+		#if right child is greater than the root element !
+		if(right<size and items[right]>items[largest]):
+			largest=right
+		if largest!=current_index:
+			items[current_index],items[largest]=items[largest],items[current_index]
+			self.heapify(items,size,largest)
+	#end of heap sort !
 #---------------End of Sorting----------------------#

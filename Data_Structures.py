@@ -175,6 +175,13 @@ class DLL:
 	#deletes a node in the doubly linked list if it is there !(checking by the numrical value !)
 	def deleteNode(self,data):
 		if self.head!=None:
+			#if the head is the only element in the DLL, then
+			if self.head.next is None:
+				if self.head.data==data:
+					self.head=None
+				else:
+					print('No Item Found !')
+				return	
 			#if the head is not null and the head node is to be deleted !
 			if self.head.data==data:
 				#storing the head node !
@@ -199,6 +206,7 @@ class DLL:
 					current_node.prev.next=None
 				else:
 					print('Not Found !')
+			
 			return current_node.data
 #--------------Ending of Doubly Linked List------------------#
 #------------------begining of BST------------------------#
@@ -357,16 +365,15 @@ class Matrix:
 		
 	def subtract(self,matrix1):
 		new_matrix=[[0]*self.cols]*self.rows
-	
+		#for matrix multiplication the rows of the second matrix must be equal to the cols of the first matrix !
+		
 		if self.rows==matrix1.rows and self.cols==matrix1.cols:
-			new_matrix=[[self.matrixList[i][j]-matrix1.matrixList[i][j] for j in range(self.cols)] for i in range(self.rows)]
+			new_matrix=[[sum(a*b for a,b in zip(_i,_j)) for _j in zip(*matrix1.matrixList)] for _i in self.matrixList]	
 		return new_matrix
 	def transpose(self):
-		#intilizing a new matrix of the order colsxrows(Such that the new matrix can have the rows equal to that of the ol matrix and cols equal to that of rows of new cols !)
 		transpose=[[0]*self.rows]*self.cols
-		for i in range(len(transpose)):
-			for j in range(len(transpose[0])):
-				transpose[i][j]=self.matrixList[j][i]
+		#intilizing a new matrix of the order colsxrows(Such that the new matrix can have the rows equal to that of the ol matrix and cols equal to that of rows of new cols !)
+		transpose=[[self.matrixList[j][i] for j in range(len(self.matrixList))] for i in range(len(self.matrixList[0]))]
 		return transpose
 	#matrix multiplication
 	def multiply(self,matrix1):
@@ -379,7 +386,7 @@ class Matrix:
 				for j in range(len(matrix1.matrixList[0])):
 					#the multiplication logic is that the the first numeber of the resultant matrix is sum of numbers of product of first row of first matrix and first col of second matrix ! 
 					for k in range(len(matrix1.matrixList)):
-						result_matrix[i][j]+=self.matrixList[i][k]+matrix1.matrixList[k][j]
+						result_matrix[i][j]+=(self.matrixList[i][k]+matrix1.matrixList[k][j])
 			return result_matrix
 		
 #-----------------Ending of A matrix------------------# 

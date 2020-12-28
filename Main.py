@@ -103,7 +103,8 @@ if __name__=='__main__':
 			print('12 is found !' if dll.search(12) else 'Nope ')
 			print('17 is found !' if dll.search(17) else 'Nope ')
 			print('The reverse of the Current DLL is ',dll.reverse())
-			print(f'{dll.deleteNode(16)} Deleted !')
+			print(f'{dll.deleteNode(14)} Deleted !')
+			print(f'{dll.deleteNode(12)} Deleted !')
 			dll.display()
 		elif choose_ds==6:
 			matrix =Matrix(2,2)

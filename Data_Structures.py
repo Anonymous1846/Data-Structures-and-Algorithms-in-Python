@@ -175,16 +175,30 @@ class DLL:
 	#deletes a node in the doubly linked list if it is there !(checking by the numrical value !)
 	def deleteNode(self,data):
 		if self.head!=None:
+			#if the head is not null and the head node is to be deleted !
+			if self.head.data==data:
+				#storing the head node !
+				head=self.head
+				#new head will be the next head and previous head will be the None value !
+				self.head=self.head.next
+				self.head.prev=None
+				return head.data
+			#we will traverse till we reach a point where the next node of the current node is None
 			current_node=self.head
-			while current_node is not None:
-				#if the currentnode data is equal to the given data,then we delete the node and 
+			while current_node.next is not None:
+				#when we get the data, we stop and break the loop the previous node's next will be the current node's next node and the next node's previous will be the current node's previous node !
 				if current_node.data==data:
-					prev_node=current_node.prev
-					next_node=current_node.next
-					prev_node.next=current_node.next
-					next_node.prev=prev_node
-					current_node=None
+					break
 				current_node=current_node.next
+				#checking if it is not the last node !
+			if current_node.next is not None:
+				current_node.prev.next=current_node.next
+				current_node.next.prev=current_node.prev
+			else:
+				if current_node.data==data:
+					current_node.prev.next=None
+				else:
+					print('Not Found !')
 			return current_node.data
 #--------------Ending of Doubly Linked List------------------#
 #------------------begining of BST------------------------#

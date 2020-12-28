@@ -163,15 +163,6 @@ class DLL:
 				rev.append(current_node.data)
 				current_node=current_node.prev
 		return rev
-	def length(self):
-		if self.head!=None:
-			length=0
-			current_node=self.head
-			while current_node is not None:
-				length+=1
-				current_node=current_node.next
-			return length
-		return 0
 	#deletes a node in the doubly linked list if it is there !(checking by the numrical value !)
 	def deleteNode(self,data):
 		if self.head!=None:

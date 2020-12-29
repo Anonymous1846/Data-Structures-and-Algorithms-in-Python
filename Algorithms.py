@@ -135,7 +135,7 @@ class Sorting:
 	#Out of the above sorting algorithms, only the radix sort is the sort with nill comparison
 	#it categorizes the numbers accoridng to the place values of the numbers.(Due to this feature, it is called Bucket Sort !)i
 	def radix_sort(self,items):
-		#for calculating the number of passes 
+		#for calculating the number of passes, and the number of digits in the largest number (Say 123 has 3 passes !)
 		for digit in range(0,self.get_num_of_max(items)):
 			#creating ten buckets from the 0 to the max number of digits
 			buckets=[[] for i in range(10)]

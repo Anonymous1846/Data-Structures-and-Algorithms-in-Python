@@ -388,10 +388,15 @@ class Matrix:
 #---An AVL is an enhanced Binary Search Tree, where the search time can be optimized by adjusting the hieght of the tree.The hieght difference between the left and right sub-tree is either -1,0,1,otherwise we need to perform 
 #rotaion----------#
 class AVL:
+	#SImilar to the BST, the AVL tree has a Node which has the left and right sub children
 	class AVLNode:
-		def __init__(self):
-			pass
+		def __init__(self,data=None):
+			self.data=data
+			self.left=None
+			self.right=None
+			self.height=0
+	#the ctr for the AVL Tree !
 	def __init__(self):
-		pass
+		self.root=None
 
 #----------------------Ending of AVL---------------------------------#

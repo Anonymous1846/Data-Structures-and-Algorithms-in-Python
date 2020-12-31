@@ -398,16 +398,5 @@ class AVL:
 	#the ctr for the AVL Tree !
 	def __init__(self):
 		self.root=None
-	#a recursive function to calculate the height !
-	def calHeight(self,node):
-		if not root:
-			return 0
-		#if the root node is Null, then the height of the AVL tree is 0,other wise we return the max height of the tree !
-		return node.height
-	def balanceFactor(self,node):
-		if not root:
-			return 0
-		#the balance factor is the difference between the heights of the right and left subtree !
-		return self.calHeight(self,node.left)-self.calHeight(self,node.right)
-	
+
 #----------------------Ending of AVL---------------------------------#

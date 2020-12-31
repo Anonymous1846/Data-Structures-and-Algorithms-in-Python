@@ -408,6 +408,8 @@ class AVL:
 		if not root:
 			return 0
 		#the balance factor is the difference between the heights of the right and left subtree !
+		#the optimal balance factor is in the range of {-1,0,1}
 		return self.calHeight(self,node.left)-self.calHeight(self,node.right)
-	
+	def rotateRight(self,node):
+		pass
 #----------------------Ending of AVL---------------------------------#

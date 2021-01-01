@@ -150,8 +150,10 @@ if __name__=='__main__':
 			test_list.sort()
 			start_time=timeit.default_timer()
 			print(f'{key} is found ! Runtime: {round(timeit.default_timer()-start_time,2)} secs' if searching.jump_search(test_list,key) else f'Not Found Runtime: {round(timeit.default_timer()-start_time,2)} secs!')
-			print(f'{key} is found ! Runtime: {round(timeit.default_timer()-start_time,2)} secs' if searching.jump_search(test_list,non_key) else f'Not Found ! Runtime: {round(timeit.default_timer()-start_time,2)} secs!')	            elif choose_al == 4:
-			#test case for Exponential search !
+			print(f'{key} is found ! Runtime: {round(timeit.default_timer()-start_time,2)} secs' if searching.jump_search(test_list,non_key) else f'Not Found ! Runtime: {round(timeit.default_timer()-start_time,2)} secs!')
+	
+		elif choose_al == 4:
+			#test case for Exponential Search !
 			test_list.sort()
 			start_time=timeit.default_timer()
 			print(f'{key} is found ! Runtime: {round(timeit.default_timer()-start_time,2)} secs' if searching.exp_search(test_list,key) else f'Not Found Runtime: {round(timeit.default_timer()-start_time,2)} secs!')

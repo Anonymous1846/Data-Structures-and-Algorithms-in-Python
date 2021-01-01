@@ -56,7 +56,19 @@ class Search:
 		#helper function paraamters are the array iteself, the key, the right index(size of the array ), and the Left index(0 in the current Context !)
 		return self._exp_search(items,key,len(items),0)
 	def _exp_search(self,items,key,right,left):
-		pass
+		#if the difference between the left and right indices is less than or equal to 0 then there's no elements(array is null)
+		if right-left<=0:return False
+		#the first range starts from One 
+		init_range=1
+		#checking if the init_index is always less than the length of the array !
+		while init_range<right-left+1:
+			if items[init_range]<key:
+				init_range*=2
+				#above syntax to update the range !
+			else:
+				break
+			#searching within the range of i/2 and the i(where the element is bound to exist).
+		return self.binary_search(items[init_range//2:int(init_range)],key)
 #------Ending of Exponential Search---#
 #---------------------End of Searching --------------------------------------------#
 #-------------------------------------Start of Sorting-----------------------------#

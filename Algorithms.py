@@ -49,6 +49,15 @@ class Search:
 			return True
 		return False
 	#ending of Jump Search------!
+#staring of Exponential Search--------#
+#Exponential Search is an Enhanced Version of Binary Search, not much of a difference in Small Arrays, but has a significant difference when it comes to larges arrays !
+	def exp_search(self,items,key):
+		#call made to the private helper function,in the exponential search, the algorithm first finds the range where the number is bound to exist !, after that the performs a binary search at that given range !
+		#helper function paraamters are the array iteself, the key, the right index(size of the array ), and the Left index(0 in the current Context !)
+		return self._exp_search(items,key,len(items),0)
+	def _exp_search(self,items,key,right,left):
+		pass
+#------Ending of Exponential Search---#
 #---------------------End of Searching --------------------------------------------#
 #-------------------------------------Start of Sorting-----------------------------#
 class Sorting:

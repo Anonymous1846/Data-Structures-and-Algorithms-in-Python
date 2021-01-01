@@ -125,11 +125,13 @@ if __name__=='__main__':
 			tester(trans,'\tTranspose\n------------------------\n')
 			prdt=matrix.multiply(matrix1)
 			tester(prdt,'\tProduct\n------------------------\n')
+			div=matrix.scalar_division(2)
+			tester(div,'\tScalar Division\n------------------------\n')
 
 
 		
 	elif option==2:
-		choose_al=int(input('1)Linear Search\n2)Binary Search\n3)Jump Search\n4)Bubble Sort\n5)Selection Sort\n6)Merge Sort\n7)Quick Sort\n8)Insertion Sort\n9)Radix Sort\n10)Shell Sort\n11)Max Heap Sort\n'))
+		choose_al=int(input('1)Linear Search\n2)Binary Search\n3)Jump Search\n4)Exponential Search\n5)Bubble Sort\n6)Selection Sort\n7)Merge Sort\n8)Quick Sort\n9)Insertion Sort\n10)Radix Sort\n11)Shell Sort\n12)Max Heap Sort\n'))
 		search=Search()
 		if choose_al ==1:
 			#test case for linear search !
@@ -148,22 +150,27 @@ if __name__=='__main__':
 			test_list.sort()
 			start_time=timeit.default_timer()
 			print(f'{key} is found ! Runtime: {round(timeit.default_timer()-start_time,2)} secs' if searching.jump_search(test_list,key) else f'Not Found Runtime: {round(timeit.default_timer()-start_time,2)} secs!')
-			print(f'{key} is found ! Runtime: {round(timeit.default_timer()-start_time,2)} secs' if searching.jump_search(test_list,non_key) else f'Not Found ! Runtime: {round(timeit.default_timer()-start_time,2)} secs!')	
-		elif choose_al == 4:
+			print(f'{key} is found ! Runtime: {round(timeit.default_timer()-start_time,2)} secs' if searching.jump_search(test_list,non_key) else f'Not Found ! Runtime: {round(timeit.default_timer()-start_time,2)} secs!')	            elif choose_al == 4:
+			#test case for Exponential search !
+			test_list.sort()
+			start_time=timeit.default_timer()
+			print(f'{key} is found ! Runtime: {round(timeit.default_timer()-start_time,2)} secs' if searching.exp_search(test_list,key) else f'Not Found Runtime: {round(timeit.default_timer()-start_time,2)} secs!')
+			print(f'{key} is found ! Runtime: {round(timeit.default_timer()-start_time,2)} secs' if searching.exp_search(test_list,non_key) else f'Not Found ! Runtime: {round(timeit.default_timer()-start_time,2)} secs!')
+		elif choose_al == 5:
 			test_sorts(sorting.bubble_sort,test_list)
-		elif choose_al ==5:
+		elif choose_al == 6:
 			test_sorts(sorting.selection_sort,test_list)
-		elif choose_al ==6:
+		elif choose_al == 7:
 			test_sorts(sorting.merge_sort,test_list)
-		elif choose_al ==7:
+		elif choose_al == 8:
 			test_sorts(sorting.quick_sort,test_list)
-		elif choose_al ==8:
+		elif choose_al == 9:
 			test_sorts(sorting.insertion_sort,test_list)
-		elif choose_al ==9:
+		elif choose_al == 10:
 			test_sorts(sorting.radix_sort,test_list)
-		elif choose_al ==10:
+		elif choose_al == 11:
 			test_sorts(sorting.shell_sort,test_list)
-		elif choose_al ==11:
+		elif choose_al ==12:
 			test_sorts(sorting.max_heap_sort,test_list)
 
 

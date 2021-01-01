@@ -382,8 +382,11 @@ class Matrix:
 			#using list comprehension to calculate the matrices !, zip means to concatenate the value and * means to unpack them !
 			#the first eleme  
 			result_matrix=[[sum(a*b for a,b in zip(x_row,y_col))for y_col in zip(*matrix1.matrixList)] for x_row in self.matrixList]
-			return result_matrix
-		
+		return result_matrix
+	#scaler division,here the inverse of a scalar value is multiplied by individual matrix elements !
+	def scalar_division(self,val):
+		self.matrixList=[[self.matrixList[i][j]//val for j in range(len(self.matrixList[0]))] for i in range(len(self.matrixList))]
+		return self.matrixList
 #-----------------Ending of A matrix------------------# 
 #---An AVL is an enhanced Binary Search Tree, where the search time can be optimized by adjusting the hieght of the tree.The hieght difference between the left and right sub-tree is either -1,0,1,otherwise we need to perform 
 #rotaion----------#
@@ -411,5 +414,87 @@ class AVL:
 		#the optimal balance factor is in the range of {-1,0,1}
 		return self.calHeight(self,node.left)-self.calHeight(self,node.right)
 	def rotateRight(self,node):
-		pass
-#----------------------Ending of AVL---------------------------------#
+		#inorder to perform the right rotation, we choose the current node and the then shift to the left child of the current node
+		#Then keeping the left node, then we shift to its right Node !
+
+		temporaryLeft=node.left
+		currenttemp=temporaryLeft.right
+
+		#the right node of the temporary left child is the function parameter node
+		temporaryLeft.right=node
+		node.left=currenttemp
+		node.height=max(self.calHeight(node.left),self.calHeight(node.right))+1
+		temporaryLeft.height=max(self.calHeight(temporaryLeft.left),self.calHeight(temporaryLeft.right)) +1
+		return temporaryLeft
+	def rotateLeft(self,node):
+		#inorder to perform the right rotation, we choose the current node and the then shift to the left child of the current node
+		#Then keeping the left node, then we shift to its right Node !
+
+		temporaryRight=node.right
+		currenttemp=temporaryRight.left
+
+		#the right node of the temporary left child is the function parameter node
+		temporaryRight.left=node
+		node.right=currenttemp
+		node.height=max(self.calHeight(node.left),self.calHeight(node.right))+1
+		temporaryRight.height=max(self.calHeight(temporaryRight.left),self.calHeight(temporaryRight.right)) +1
+		return temporaryRight
+	def delete(self,data):
+		if self.root:
+			#calling the helper function to remove the node(data)
+			self.root=self._delete(data,self.root)
+	#helper function, which takes the parameters data and the node(in this case the root node)
+	def _delete(self,data,node):
+		if not node:
+			return node
+		if data<node.data:
+			node.left=self._delete(data,node.left)
+		elif data>node.data:
+			node.right=self._delete(data,node.right)
+		else:
+			if not node.left and not node.right:
+				print('Okay Lets Remove a Leaf Node !')
+				del node
+				#after deleting the node,we then return None Value !
+				return None
+			if not node.left:
+				#if the left child is empty,then we remove the right child!
+				temp=node.right
+				del node
+				return temp
+			#if the right child is empty,then we remove the left child !
+			elif not node.right:
+				temp=node.left
+				del node
+				return temp
+			#the last case will be removing the node with two children !
+			temp=self.getPredecessor(node.left)
+			node.data=temp.data
+			node.left=self._delete(temp.data,node.left)
+
+		if not node:
+			return node
+		#calculating the maximum height !
+		node.height=max(self.calHeight(node.left),self.calHeight(node.right))+1
+		balance=self.balanceFactor(node)
+		#if the balance factor is positive and greater than one !
+		if balance>1 and self.balanceFactor(node.left)>=0:
+			return self.rotateRight(node)
+		#in case of left right tree
+		if balance >1 and self.balanceFactor(node.left)<0:
+			node.left=self.rotateLeft(node.left)
+			return self.rotateRight(node)
+		if balance<-1 and self.balanceFactor(node.right)<=0:
+			return self.rotateLeft(node)
+		if balance<-1 and self.balanceFactor(node.right)>0:
+			node.right=self.rotateRight(node.right)
+			return self.rotateLeft(node)
+		return node
+
+	#Helper function to get the predecessor !
+	def getPredecessor(self,node):
+		if node.right:
+			#recursive call to the right child 
+			return self.getPredecessor(node.right)
+		return node
+#----------------------Ending of AVL---------------------------------#1

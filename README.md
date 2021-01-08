@@ -17,8 +17,16 @@ Searching Algorithms:<br>
 <ol>
   <li>Linear Search</li>
   <li>Binary Search</li>
-  <li>Linked Lists</li>
-  <li>Doubly Linked Lists</li>
-  <li>Binary Search Trees</li>
-  <li>AVL Tree(Self Balancing BST)</li>
+  <li>Jump Search</li>
+  <li>Exponential Search</li>
+</ol>
+Sorting Algorithms:<br>
+<ol>
+  <li>Bubble Sort</li>
+  <li>Insertion Sort</li>
+  <li>Selection Sort</li>
+  <li>Merge Sort</li>
+  <li>Quick Sort</li>
+  <li>Heap Sort</li>
+  <li>Radix Sort</li>
 </ol>
